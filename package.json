@@ -4,9 +4,63 @@
   "description": "NestJS-specific SDK for EduLearn platform",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "Muhammed Shafeeque",
+  "homepage": "https://github.com/muhammed-shafeeque-th/edulearn-nest",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammed-shafeeque-th/edulearn-nest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/muhammed-shafeeque-th/edulearn-nest/issues"
+  },
+  "keywords": [
+    "edulearn",
+    "sdk",
+    "core",
+    "microservices",
+    "typescript",
+    "grpc",
+    "observability",
+    "opentelemetry",
+    "prometheus",
+    "winston",
+    "logging",
+    "tracing",
+    "metrics",
+    "redis",
+    "kubernetes"
+  ],
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test",
+    "prepare": "npm run",
+    "release": "npm run verify && npm version patch && git push && git push --tags && npm publish",
+    "prepublishOnly": "npm run build",
+    "release:patch": "npm version patch",
+    "release:minor": "npm version minor",
+    "release:major": "npm version major",
+    "publish:public": "npm publish --access public"
   },
   "dependencies": {
     "@edulearn/core": "^1.0.15"
