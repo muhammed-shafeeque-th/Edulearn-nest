@@ -2,7 +2,7 @@ import { DynamicModule, Global, Module } from "@nestjs/common";
 
 import { HEALTH_CHECKS, HEALTH_MODULE_OPTIONS } from "./health.constants";
 
-import { HealthController } from "./controllers/health.controller";
+// import { HealthController } from "./controllers/health.controller";
 
 import { HealthModuleOptions } from "./interfaces/health-module-options.interface";
 
@@ -16,7 +16,7 @@ export class HealthModule {
     return {
       module: HealthModule,
 
-      controllers: [HealthController],
+      // controllers: [HealthController],
 
       providers: [
         {
