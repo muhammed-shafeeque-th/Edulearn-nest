@@ -1,3 +1,4 @@
+import { Provider } from "@nestjs/common";
 import { IHealthCheck } from "./health-check.interface";
 
 export interface HealthModuleOptions {
@@ -5,5 +6,5 @@ export interface HealthModuleOptions {
 
   version?: string;
 
-  checks?: IHealthCheck[];
+  checks?: Provider<IHealthCheck>[];
 }

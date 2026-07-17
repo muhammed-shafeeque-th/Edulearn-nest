@@ -23,6 +23,7 @@ export class HealthModule {
           provide: HEALTH_MODULE_OPTIONS,
           useValue: options,
         },
+        ...(options.checks ?? []),
 
         {
           provide: HEALTH_CHECKS,
