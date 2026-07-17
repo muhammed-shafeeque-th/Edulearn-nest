@@ -1,0 +1,26 @@
+{
+  "name": "@edulearn/nest",
+  "version": "1.0.0",
+  "description": "NestJS-specific SDK for EduLearn platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@edulearn/core": "^1.0.15"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.0",
+    "@nestjs/core": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "typescript": "^5.5.4"
+  },
+  "files": [
+    "dist"
+  ]
+}
