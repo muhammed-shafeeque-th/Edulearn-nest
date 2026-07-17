@@ -28,7 +28,7 @@
 
     "forceConsistentCasingInFileNames": true,
 
-    "types": ["node", "jest"],
+    "types": ["node"],
 
     "sourceMap": true
   },
