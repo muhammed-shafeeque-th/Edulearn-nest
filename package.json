@@ -63,7 +63,7 @@
     "publish:public": "npm publish --access public"
   },
   "dependencies": {
-    "@edulearn/core": "^1.0.16"
+    "@edulearn/core": "^1.0.18"
   },
   "peerDependencies": {
     "@nestjs/common": "^11.0.0",
