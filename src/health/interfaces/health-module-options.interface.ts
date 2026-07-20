@@ -1,19 +1,17 @@
 import { ModuleMetadata, Provider } from "@nestjs/common";
-import { IHealthCheck } from "./health-check.interface";
 
 export interface HealthModuleOptions {
   serviceName: string;
 
   version?: string;
-
-  checks?: Provider<IHealthCheck>[];
+  
+  environment?: string;
 }
 
 
 
 export interface HealthModuleAsyncOptions
 extends Pick<ModuleMetadata, "imports"> {
-    checks?: Provider<IHealthCheck>[];
 
     inject?: any[];
 

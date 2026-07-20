@@ -22,7 +22,7 @@ export class HealthController {
   }
 
   @Get("ready")
-  async ready(@Res() res: Response) {
+  async ready(@Res() res: any) {
     const result = await this.readinessService.checkReadiness();
 
     res

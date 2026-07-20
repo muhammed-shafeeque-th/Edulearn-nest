@@ -1,18 +1,19 @@
-import { Inject, Injectable } from "@nestjs/common";
-import { HEALTH_CHECKS } from "../health.constants";
-import { IHealthCheck } from "../interfaces/health-check.interface";
+import {  Injectable } from "@nestjs/common";
 import { HealthCheckResult } from "../interfaces/health-check-result.interface";
+import { HealthRegistry } from "../registry/health.registry";
 
 @Injectable()
 export class ReadinessService {
   constructor(
-    @Inject(HEALTH_CHECKS)
-    private readonly checks: IHealthCheck[],
+    private readonly registry: HealthRegistry,
   ) {}
 
   async checkReadiness() {
+
+    const checks = this.registry.getChecks();
+
     const settled = await Promise.allSettled(
-      this.checks.map(async (check) => {
+      checks.map(async (check) => {
         const started = Date.now();
 
         const result = await check.check();
@@ -29,7 +30,7 @@ export class ReadinessService {
     let ready = true;
 
     settled.forEach((result, index) => {
-      const check = this.checks[index];
+      const check = checks[index];
 
       if (result.status === "fulfilled") {
         results[result.value.name] = result.value;
