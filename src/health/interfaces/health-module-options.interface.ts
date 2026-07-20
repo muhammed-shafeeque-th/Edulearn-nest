@@ -12,7 +12,8 @@ export interface HealthModuleOptions {
 
 
 export interface HealthModuleAsyncOptions
-    extends Pick<ModuleMetadata, "imports"> {
+extends Pick<ModuleMetadata, "imports"> {
+    checks?: Provider<IHealthCheck>[];
 
     inject?: any[];
 
