@@ -1,5 +1,7 @@
 export * from "./health.constants"
 export * from "./health.module"
+export * from "./registry/base.check"
+export * from "./registry/health.registry"
 export * from "./interfaces/health-check.interface"
 export * from "./interfaces/health-module-options.interface"
 export * from "./interfaces/health-check-result.interface"
