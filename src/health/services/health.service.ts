@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { HealthModuleOptions } from "../interfaces/health-module-options.interface";
 
-@Injectable()
 export class HealthService {
   constructor(
     private readonly options: HealthModuleOptions,
