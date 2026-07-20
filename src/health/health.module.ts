@@ -1,4 +1,4 @@
-import { DynamicModule, Global, Module } from "@nestjs/common";
+import { DynamicModule, Global, Module, Provider } from "@nestjs/common";
 
 import { HEALTH_CHECKS, HEALTH_MODULE_OPTIONS } from "./health.constants";
 
@@ -8,11 +8,17 @@ import { HealthModuleOptions } from "./interfaces/health-module-options.interfac
 
 import { HealthService } from "./services/health.service";
 import { ReadinessService } from "./services/readiness.service";
+import { IHealthCheck } from "@edulearn/core";
 
 @Global()
 @Module({})
 export class HealthModule {
   static forRoot(options: HealthModuleOptions): DynamicModule {
+    const checkProviders = options.checks ?? [];
+    const checkProviderTokens = checkProviders.map((provider) =>
+      typeof provider === "object" && "provide" in provider ? provider.provide : provider,
+    );
+
     return {
       module: HealthModule,
 
@@ -23,11 +29,13 @@ export class HealthModule {
           provide: HEALTH_MODULE_OPTIONS,
           useValue: options,
         },
-        ...(options.checks ?? []),
+
+        ...checkProviders,
 
         {
           provide: HEALTH_CHECKS,
-          useValue: options.checks ?? [],
+          useFactory: (...checks: IHealthCheck[]) => checks,
+          inject: checkProviderTokens as any[],
         },
 
         {
