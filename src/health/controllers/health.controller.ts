@@ -15,7 +15,7 @@ export class HealthController {
     private readonly readinessService: ReadinessService,
   ) {}
 
-  @Get("health")
+  @Get("healthz")
   @HttpCode(HttpStatus.OK)
   health() {
     return this.healthService.getHealth();
