@@ -1,6 +1,6 @@
 {
   "name": "@edulearn/nest",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "NestJS-specific SDK for EduLearn platform",
   "license": "MIT",
   "author": "Muhammed Shafeeque",
