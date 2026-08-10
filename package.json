@@ -54,7 +54,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "verify": "npm run format:check && npm run lint && npm run typecheck && npm test",
-    "prepare": "npm run install && npm run build",
+    "prepare": "npm run ",
     "release": "npm run verify && npm version patch && git push && git push --tags && npm publish",
     "prepublishOnly": "npm run build",
     "release:patch": "npm version patch",
